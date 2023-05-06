@@ -1,0 +1,144 @@
+// variables //
+$black-color: #000000;
+$purple-color: #764098;
+$yellow-color: #F8C829;
+$white-color: #ffffff;
+$background-grey: #F3F3F3;
+$font-size: 16px;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+
+//end mixin//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background-grey;
+  width: 100%;
+  height: 100%;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+//end resets//
+// styles//
+.container {
+  @include flex(flex, center, center, null);
+  @include margin-padding(100px, 0, 100px, 0, false);
+  height: 45rem;
+  flex-wrap: wrap;
+  column-gap: 15px;
+
+  .appliances-card {
+    width: 25rem;
+    height: 30rem;
+    border-radius: 15px;
+    background: $white-color;
+    @include margin-padding(0, 0, 15px, 0);
+
+    .img-container {
+      position: relative;
+      width: 25rem;
+      height: 13rem;
+      overflow: hidden;
+      border-top-right-radius: 15px;
+      @include flex(flex, center, center, null);
+      img {
+        border-top-left-radius: 15px;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+      .title-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: $yellow-color;
+        @include margin-padding(5px, 18px, 5px, 22px, false);
+        border-top-left-radius: 15px;
+        .title {
+          font-size: $font-size + 17px;
+          font-weight: bold;
+          color: $purple-color;
+          text-shadow: 1px 2px 0 $white-color;
+        }
+      }
+    }
+    .caption {
+      @include flex(flex, center, center, column);
+      height: 54%;
+      .caption-list {
+        width: 100%;
+        height: 100%;
+        @include flex(flex, space-evenly, flex-start, column);
+        .caption-list-item {
+          span {
+            svg {
+              @include margin-padding(0, 13px, 0, 18px);
+            }
+          }
+          .names {
+            font-size: $font-size - 3px;
+            font-weight: bold;
+            color: $black-color;
+          }
+        }
+      }
+    }
+  }
+}
+//end styles//
+//media query//
+@media screen and (max-width: 470px){
+  body {
+    .container {
+      .appliances-card {
+        width: 20rem;
+        height: 25rem;
+        .img-container {
+          width: 20rem;
+          height: 10rem;
+          .title-container {
+            .title {
+              font-size: $font-size + 6px;
+            }
+          }
+        }
+        .caption {
+          .caption-list {
+            .caption-list-item {
+              .names {
+                font-size: $font-size - 3px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

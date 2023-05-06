@@ -1,0 +1,81 @@
+// variables//
+$grey-color: #E5E5E5;
+$text-color: #272727;
+$white-color: #ffffff;
+$font-size: 16px;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+//end mixins//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+//end resets//
+// styles//
+.container {
+  @include flex(flex, center, center,null);
+  .wrapper {
+    width: 30rem;
+    min-height: 22rem;
+    border-radius: 15px;
+    //@include margin-padding(1rem, 2rem, 1rem, 2rem, false);
+    @include flex(flex, center, center, column);
+    background: $white-color;
+    .title {
+      font-size: $font-size + 20px;
+      font-weight: bold;
+      color: $text-color;
+    }
+    .caption {
+      font-size: $font-size + 4px;
+      color: $text-color;
+      @include margin-padding(11px, 0, 10px, 0);
+    }
+    .networks {
+      @include flex(flex, center, center, column);
+      width: 100%;
+      @include margin-padding(17px, 0, 0, 0);
+      .row {
+        @include flex(flex, center, center,null);
+        width: 100%;
+        @include margin-padding(0, 0, 17px, 0);
+        .icon {
+          background: $grey-color;
+          width: 68px;
+          height: 66px;
+          @include flex(flex, center, center, null);
+          @include margin-padding(0, 15px, 0, 15px);
+          border-radius: 12px;
+          span {
+            @include flex(flex, center, center, null);
+          }
+        }
+      }
+    }
+  }
+}

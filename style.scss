@@ -1,0 +1,262 @@
+// variables //
+$black-color: #000000;
+$purple-color: #764098;
+$white-color: #ffffff;
+$caption-color: #1A011E;
+$Sentence-color: #00272B;
+$font-size: 16px;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+
+//end mixin//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+//end resets//
+// styles//
+.container {
+  @include flex(flex, center, center, null);
+
+  .wrapper {
+    width: 40%;
+    //height: 37.5rem;
+    border-radius: 15px;
+    @include margin-padding(30px, 0, 12px, 0, false);
+    @include flex(flex, center, center, column);
+    background: $white-color;
+
+    .title {
+      @include margin-padding(0, 0, 5px, 0);
+
+      span {
+        font-size: $font-size + 16px;
+        color: $black-color;
+      }
+    }
+
+    hr {
+      width: 90%;
+      background: $purple-color;
+      opacity: 28%;
+      @include margin-padding(0, 0, 12px, 0);
+    }
+
+    .Sentence {
+      @include margin-padding(15px, 0, 26px, 0);
+
+      span {
+        font-size: $font-size + 2px;
+        color: $Sentence-color;
+      }
+    }
+
+
+    .row {
+      width: 100%;
+      @include flex(flex, center, center, null);
+      flex-wrap: wrap;
+      //column-gap: 26px;
+      flex-basis: content;
+
+      .col-3 {
+        width: 25%;
+      }
+
+      .img-caption {
+        @include flex(flex, center, center, column);
+        @include margin-padding(0, 0, 18px, 0);
+        row-gap: 8px;
+        width: 170px;
+        height: 170px;
+
+        .img {
+          overflow: hidden;
+          @include flex(flex, center, center, null);
+          @include margin-padding(0, 0, 8px, 0);
+
+          img {
+            object-fit: cover;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .caption {
+          font-size: $font-size - 1;
+          font-weight: bold;
+          color: $caption-color;
+        }
+      }
+    }
+  }
+}
+
+//end styles//
+//start media query//
+@media screen and (max-width: 1275px) {
+  body {
+    .container {
+      .wrapper {
+        width: 45%;
+        .title {
+          span {
+            font-size: $font-size + 14px;
+            color: $black-color;
+          }
+        }
+
+        hr {
+          width: 80%;
+        }
+
+        .Sentence {
+          span {
+            font-size: $font-size;
+          }
+        }
+
+        .row {
+          column-gap: 0;
+          .img-caption {
+            width: 145px;
+            height: 145px;
+
+            .img {
+              @include margin-padding(0, 8px, 8px, 8px);
+            }
+
+            .caption {
+              font-size: $font-size - 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 970px) {
+  body {
+    .container {
+      .wrapper {
+        width: 55%;
+        .title {
+          span {
+            font-size: $font-size + 10px;
+            color: $black-color;
+          }
+        }
+
+        .Sentence {
+          span {
+            font-size: $font-size;
+          }
+        }
+
+        .row {
+          .col-3 {
+            width: 66%;
+          }
+          .img-caption {
+            width: 140px;
+            height: 140px;
+
+            .img {
+              @include margin-padding(0, 8px, 8px, 8px);
+            }
+
+            .caption {
+              font-size: $font-size - 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    .container {
+      .wrapper {
+        width: 65%;
+
+        .title {
+          span {
+            font-size: $font-size + 4px;
+            color: $black-color;
+          }
+        }
+
+        .Sentence {
+          span {
+            font-size: $font-size - 2px;
+          }
+        }
+
+        .row {
+          .col-3 {
+            width: 25%;
+          }
+          .img-caption {
+            width: 130px;
+            height: 130px;
+            @include margin-padding(0, 0, 10px, 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  body {
+    .container {
+      .wrapper {
+        width: 68%;
+        .Sentence {
+          span {
+            font-size: $font-size - 5px;
+          }
+        }
+        .row {
+          .col-3 {
+            width: 75%;
+          }
+          .img-caption {
+            width: 125px;
+            height: 125px;
+          }
+        }
+      }
+    }
+  }
+}
