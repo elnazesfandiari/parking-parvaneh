@@ -5,6 +5,7 @@ $white-color: #ffffff;
 $caption-color: #1A011E;
 $Sentence-color: #00272B;
 $font-size: 16px;
+$font-weight: bold;
 
 //end variables//
 //mixins//
@@ -43,6 +44,7 @@ a {
 // styles//
 .container {
   @include flex(flex, center, center, null);
+  height: 100vh;
 
   .wrapper {
     width: 40%;
@@ -111,7 +113,7 @@ a {
 
         .caption {
           font-size: $font-size - 1;
-          font-weight: bold;
+          font-weight: $font-weight;
           color: $caption-color;
         }
       }
@@ -126,6 +128,7 @@ a {
     .container {
       .wrapper {
         width: 45%;
+
         .title {
           span {
             font-size: $font-size + 14px;
@@ -145,6 +148,7 @@ a {
 
         .row {
           column-gap: 0;
+
           .img-caption {
             width: 145px;
             height: 145px;
@@ -168,6 +172,7 @@ a {
     .container {
       .wrapper {
         width: 55%;
+
         .title {
           span {
             font-size: $font-size + 10px;
@@ -185,6 +190,7 @@ a {
           .col-3 {
             width: 66%;
           }
+
           .img-caption {
             width: 140px;
             height: 140px;
@@ -226,6 +232,7 @@ a {
           .col-3 {
             width: 25%;
           }
+
           .img-caption {
             width: 130px;
             height: 130px;
@@ -242,15 +249,18 @@ a {
     .container {
       .wrapper {
         width: 68%;
+
         .Sentence {
           span {
             font-size: $font-size - 5px;
           }
         }
+
         .row {
           .col-3 {
             width: 75%;
           }
+
           .img-caption {
             width: 125px;
             height: 125px;

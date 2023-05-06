@@ -1,0 +1,134 @@
+// variables //
+$black-color: #000000;
+$purple-color: #764098;
+$white-color: #ffffff;
+$grey-color: #E5E5E5;
+$font-size: 16px;
+$font-weight: bold;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+
+//end mixin//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//end resets//
+// styles//
+.container {
+  background: #F2F2F2;
+  @include flex(flex, center, center, null);
+  height: 100vh;
+
+  .popup {
+    width: 29rem;
+    height: 13rem;
+    border-radius: 15px;
+    background: $white-color;
+    @include margin-padding(27px, 0, 0, 0, false);
+    text-align: center;
+
+    .amount {
+      span {
+        font-size: $font-size + 6px;
+
+        &:first-child {
+          font-weight: lighter;
+        }
+
+        &:last-child {
+          font-weight: $font-weight;
+        }
+      }
+
+      .price {
+        font-weight: $font-weight;
+      }
+    }
+
+    .make-sure {
+      @include margin-padding(0, 0, 46px, 0);
+
+      span {
+        font-size: $font-size + 6px;
+        font-weight: lighter;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      @include flex(flex, center, center, null);
+      column-gap: 17px;
+
+      button {
+        @include margin-padding(6px, 70px, 6px, 70px, false);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-size: $font-size + 5px;
+        font-weight: lighter;
+
+        &:first-child {
+          background: $purple-color;
+          color: $white-color;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+
+        &:last-child {
+          background: $grey-color;
+          color: $black-color;
+        }
+      }
+    }
+  }
+}
+
+//end styles//
+//media query//
+@media screen and (max-width: 568px) {
+  body {
+    .container {
+      .popup {
+        width: 20rem;
+        height: 8rem;
+        @include margin-padding(30px, 30px, 30px, 30px, false);
+
+        .amount,
+        .make-sure {
+          span {
+            font-size: $font-size;
+          }
+        }
+        .make-sure {
+          @include margin-padding(0, 0, 16px, 0);
+        }
+        .btn {
+          column-gap: 12px;
+
+          button {
+            @include margin-padding(3px, 50px, 3px, 50px, false);
+          }
+        }
+      }
+    }
+  }
+}

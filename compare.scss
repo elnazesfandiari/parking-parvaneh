@@ -9,6 +9,7 @@ $text-purple-color: #1A011E;
 $border-color: #AAAAAA;
 $white-color: #ffffff;
 $font-size: 16px;
+$font-weight: bold;
 
 //end variables//
 //mixins//
@@ -56,7 +57,7 @@ a {
       @include margin-padding(20px, 20px, 0, 0, false);
       span {
         font-size: $font-size + 20px;
-        font-weight: bold;
+        font-weight: $font-weight;
         color: $text-color;
       }
     }
@@ -101,7 +102,7 @@ a {
 
           span {
             font-size: $font-size + 4px;
-            font-weight: bold;
+            font-weight: $font-weight;
             color: $black-color;
           }
         }
@@ -114,12 +115,12 @@ a {
 
             &:first-child {
               font-size: $font-size + 6px;
-              font-weight: bold;
+              font-weight: $font-weight;
             }
 
             &:last-child {
               font-size: $font-size;
-              font-weight: bold;
+              font-weight: $font-weight;
             }
           }
         }
@@ -129,7 +130,7 @@ a {
             @include margin-padding(7px, 0, 0, 0);
             button {
               font-size: $font-size - 4px;
-              font-weight: bold;
+              font-weight: $font-weight;
               color: $text-btn-color;
               outline: none;
               border: none;
@@ -160,7 +161,7 @@ a {
           .length-width-container {
             .title-compare {
               font-size: $font-size + 2px;
-              font-weight: bold;
+              font-weight: $font-weight;
               @include margin-padding(17px, 56px, 17px, 56px, false);
               width: 8.6rem;
               background: $purple-color-2;
@@ -172,7 +173,7 @@ a {
             }
             span {
               font-size: $font-size + 2px;
-              font-weight: bold;
+              font-weight: $font-weight;
               color: $text-color;
               @include margin-padding(13px, 48px, 13px, 90px, false);
               border-left: 1px solid $border-color;

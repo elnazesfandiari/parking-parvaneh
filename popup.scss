@@ -1,0 +1,149 @@
+// variables //
+$black-color: #000000;
+$purple-color-opacity: rgba(118, 64, 152, 0.28);
+$purple-color: #764098;
+$white-color: #ffffff;
+$warning-color: #FE4A49;
+$font-size: 16px;
+$font-weight: bold;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+
+//end mixin//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//end resets//
+// styles//
+.container {
+  @include flex(flex, center, center, null);
+  background: #F2F2F2;
+  height: 100vh;
+  .card {
+    width: 22rem;
+    height: 31rem;
+    border-radius: 10px;
+    position: relative;
+    @include margin-padding(25px, 25px, 25px, 25px,false);
+    background: $white-color;
+    .close {
+      position: absolute;
+      top: -16px;
+      left: 0;
+      width: 100%;
+      cursor: pointer;
+      @include flex(flex, center, center, null);
+    }
+    .body-card {
+      width: 100%;
+      height: 100%;
+      .card-title {
+        width: 100%;
+        border-bottom: 1px solid $purple-color-opacity;
+        @include flex(flex, center, center, null);
+        span {
+          font-size: $font-size + 16px;
+          font-weight: $font-weight;
+          color: $black-color;
+          @include margin-padding(0, 0, 14px, 0, false);
+        }
+      }
+      .card-content {
+        height: 88%;
+        text-align: center;
+
+        .payment-amount {
+          @include margin-padding(14px, 0, 6px, 0);
+          .amount {
+            font-size: $font-size + 2px;
+            font-weight: $font-weight;
+            color: $black-color;
+            @include margin-padding(0, 0, 0, 13px, false);
+          }
+          .price {
+            font-size: $font-size + 8px;
+            font-weight: $font-weight;
+            color: $purple-color;
+          }
+          span {
+            &:last-child {
+              font-size: $font-size - 2px;
+              font-weight: $font-weight;
+              color: $purple-color;
+            }
+          }
+        }
+        .payment-type {
+          @include margin-padding(0, 0, 38px, 0);
+          .type {
+            font-size: $font-size + 2px;
+            font-weight: $font-weight;
+            color: $black-color;
+          }
+          span {
+            &:last-child {
+              font-size: $font-size + 2px;
+              font-weight: $font-weight;
+              color: $black-color;
+            }
+          }
+        }
+        .payment {
+          span {
+            font-size: $font-size + 6px;
+            font-weight: $font-weight;
+            color: $black-color;
+          }
+        }
+        .payment-way {
+          width: 138px;
+          height: 112px;
+          @include margin-padding(10px, 0, 26px, 0);
+        }
+        .warning {
+          .warning-validation {
+            font-size: $font-size - 2px;
+            color: $warning-color;
+          }
+        }
+        .btn {
+          width: 100%;
+          @include margin-padding(27px, 0, 0, 0);
+          @include flex(flex, center, center, null);
+          button {
+            cursor: pointer;
+            width: 100%;
+            @include margin-padding(10px, 0, 10px, 0, false);
+            outline: none;
+            border: none;
+            border-radius: 15px;
+            background: $purple-color;
+            color: $white-color;
+            font-size: $font-size + 2px;
+            font-weight: $font-weight;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          }
+        }
+      }
+    }
+  }
+}

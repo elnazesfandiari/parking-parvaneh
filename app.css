@@ -23,7 +23,7 @@ a {
   justify-content: center;
   align-items: center;
   padding: 100px 0 100px 0;
-  height: 45rem;
+  height: 100vh;
   flex-wrap: wrap;
   column-gap: 15px;
 }

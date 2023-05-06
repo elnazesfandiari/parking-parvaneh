@@ -1,0 +1,100 @@
+// variables //
+$black-color: #000000;
+$white-color: #ffffff;
+$warning-color: #FE4A49;
+$grey-color: #E5E5E5;
+$font-size: 16px;
+$font-weight: bold;
+
+//end variables//
+//mixins//
+@mixin flex($flex:flex, $position-x:center, $position-y: center, $direction: row) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}
+
+//end mixin//
+//resets//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//end resets//
+// styles//
+.container {
+  @include flex(flex, center, center, null);
+  height: 100vh;
+  background: $grey-color;
+  .popup {
+    width: 29rem;
+    height: 12rem;
+    background: $white-color;
+    border-radius: 15px;
+    text-align: center;
+    .title {
+      @include margin-padding(34px, 0, 28px, 0);
+      span {
+        font-size: $font-size + 6px;
+        font-weight: $font-weight;
+      }
+    }
+    .btn {
+      width: 100%;
+      @include flex(flex, center, center, null);
+      column-gap: 30px;
+      button {
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        @include margin-padding(10px, 70px, 10px, 70px, false);
+        font-size: $font-size + 5px;
+        font-weight: $font-weight;
+        &:first-child {
+          background: $warning-color;
+          color: $white-color;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+        &:last-child {
+          background: $grey-color;
+          color: $black-color;
+        }
+      }
+    }
+  }
+}
+//end styles//
+//media query//
+@media screen and (max-width: 570px){
+  body {
+    .container {
+      .popup {
+        width: 19rem;
+        height: 9rem;
+        .title {
+          span {
+            font-size: $font-size + 2px;
+          }
+        }
+        .btn {
+          column-gap: 20px;
+          button {
+            @include margin-padding(5px, 40px, 5px, 40px, false);
+            font-size: $font-size + 1px;
+          }
+        }
+      }
+    }
+  }
+}

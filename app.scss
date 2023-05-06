@@ -5,6 +5,7 @@ $yellow-color: #F8C829;
 $white-color: #ffffff;
 $background-grey: #F3F3F3;
 $font-size: 16px;
+$font-weight: bold;
 
 //end variables//
 //mixins//
@@ -50,7 +51,7 @@ a {
 .container {
   @include flex(flex, center, center, null);
   @include margin-padding(100px, 0, 100px, 0, false);
-  height: 45rem;
+  height: 100vh;
   flex-wrap: wrap;
   column-gap: 15px;
 
@@ -83,7 +84,7 @@ a {
         border-top-left-radius: 15px;
         .title {
           font-size: $font-size + 17px;
-          font-weight: bold;
+          font-weight: $font-weight;
           color: $purple-color;
           text-shadow: 1px 2px 0 $white-color;
         }
@@ -104,7 +105,7 @@ a {
           }
           .names {
             font-size: $font-size - 3px;
-            font-weight: bold;
+            font-weight: $font-weight;
             color: $black-color;
           }
         }
